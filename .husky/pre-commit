@@ -1,4 +1,15 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/bash
 
-npx --no -- lint-staged
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+commit_command="npx --no -- lint-staged"
+
+if ! $commit_command; then
+  printf "%b\n"  "${RED}error: Build failed. Fix the build issues before pushing.${NC}" >&2
+  exit 1
+else
+  printf "%b\n"  "${GREEN}Build: succeeded. Processing and Pushing...${NC}" >&2
+  exit 0
+fi
