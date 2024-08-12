@@ -24,6 +24,7 @@
     "plugin:react-hooks/recommended"
   ],
   "plugins": [
+    "prefer-arrow",
     "prettier",
     "@typescript-eslint",
     "react",
@@ -42,6 +43,13 @@
       "warn",
       {
         "default": "array"
+      }
+    ],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "ImportDeclaration[source.value='react'] ImportSpecifier",
+        "message": "Import React hooks as part of the default React import, INSTEADE `import React, { useState } from 'react' useState(); USE React.useState()`."
       }
     ],
     "@typescript-eslint/consistent-type-assertions": [
@@ -65,8 +73,8 @@
         ]
       }
     ],
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "prettier/prettier": "warn"
@@ -75,5 +83,35 @@
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.tsx",
+        "*.jsx"
+      ],
+      "rules": {
+        "@typescript-eslint/consistent-type-definitions": [
+          "error",
+          "type"
+        ]
+      }
+    },
+    {
+      "files": [
+        "./src/components/**/*.tsx",
+        "./src/components/**/*.jsx"
+      ],
+      "rules": {
+        "prefer-arrow/prefer-arrow-functions": [
+          "error",
+          {
+            "disallowPrototype": true,
+            "singleReturnOnly": false,
+            "classPropertiesAllowed": false
+          }
+        ]
+      }
+    }
+  ]
 }

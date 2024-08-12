@@ -7,5 +7,30 @@
   "arrowParens": "avoid",
   "trailingComma": "all",
   "bracketSpacing": true,
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)",
+    "^(next/(.*)$)|^(next$)",
+    "",
+    "^types$",
+    "^~/types/(.*)$",
+    "^~/assets/(.*)$",
+    "^~/config/(.*)$",
+    "^~/utils/(.*)$",
+    "^~/lib/(.*)$",
+    "^~/actions/(.*)$",
+    "^~/hooks/(.*)$",
+    "^~/components/ui/(.*)$",
+    "^~/components/(.*)$",
+    "^~/styles/(.*)$",
+    "^~/app/(.*)$",
+    "",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderBuiltinModulesToTop": true,
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+  "importOrderMergeDuplicateImports": true,
+  "importOrderCombineTypeAndValueImports": true
 }
